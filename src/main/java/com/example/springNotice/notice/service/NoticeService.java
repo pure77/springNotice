@@ -26,4 +26,11 @@ public class NoticeService {
     public int updateDetail(NoticeRequest request) {
         return noticeMapper.updateDetail(request);
     }
+    public int deleteNotice(int noticeId) {
+        return noticeMapper.deleteNotice(noticeId);
+    }
+
+    public int insertNotice(NoticeRequest request) {
+        return noticeMapper.insertNotice(request);
+    }
 }

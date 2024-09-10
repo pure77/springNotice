@@ -31,7 +31,9 @@
         </c:forEach>
 
     </table>
-
+<div>
+    <button type="button" onclick="insertNoticeMove();">등록</button>
+</div>
 </body>
 </html>
 <script>
@@ -40,4 +42,7 @@
         location.href = "notice/notice-detail/" + noticeId;
     }
 
+    function insertNoticeMove() {
+        location.href = "notice/insert-view";
+    }
 </script>

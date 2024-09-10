@@ -15,4 +15,8 @@ public interface NoticeMapper {
     NoticeResponse selectOneNotice(int noticeId);
 
     int updateDetail(NoticeRequest request);
+
+    int deleteNotice(int noticeId);
+
+    int insertNotice(NoticeRequest request);
 }

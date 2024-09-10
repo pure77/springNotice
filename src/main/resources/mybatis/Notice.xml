@@ -38,4 +38,14 @@
         where 1=1
         and notice_id = #{noticeId}
     </update>
+    <!-- 게시판 삭제 -->
+    <delete id="deleteNotice" parameterType="int">
+        delete from noticeboard where notice_id = #{noticeId}
+    </delete>
+
+    <!-- 게시판 등록 -->
+    <insert id="insertNotice" parameterType="com.example.springNotice.notice.dto.request.NoticeRequest">
+        INSERT INTO noticeboard (title, content, create_id, create_at)
+        VALUES(#{title}, #{content}, #{createId}, CURRENT_TIMESTAMP);
+    </insert>
 </mapper>
