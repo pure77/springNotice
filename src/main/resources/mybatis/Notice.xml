@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springNotice.notice.mapper.NoticeMapper">
+
+    <!-- 게시글 목록 -->
+    <select id="selectNoticeList" resultType="com.example.springNotice.notice.dto.response.NoticeResponse">
+        select
+        RANK() over (ORDER BY notice_id desc) as rankNo
+        ,notice_id
+        ,title
+        ,content
+        ,create_id
+        ,create_at
+        from noticeboard
+    </select>
+
+    <!-- 게시글 단건 조회 -->
+    <select id="selectOneNotice" parameterType="int"
+            resultType="com.example.springNotice.notice.dto.response.NoticeResponse">
+        select
+        notice_id
+        ,title
+        ,content
+        ,create_id
+        ,create_at
+        from noticeboard
+        where 1=1
+        and notice_id = #{noticeId}
+    </select>
+
+    <!-- 게시판 수정 -->
+    <update id="updateDetail" parameterType="com.example.springNotice.notice.dto.request.NoticeRequest">
+        update noticeboard
+        set
+        title = #{title}
+        ,content = #{content}
+        ,update_at = CURRENT_TIMESTAMP()
+        where 1=1
+        and notice_id = #{noticeId}
+    </update>
+</mapper>
