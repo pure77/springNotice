@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+    <style>
+        table { border: 1px solid black; }
+        th, td { border: 1px solid black; width: 5%; }
+    </style>
+</head>
+<body>
+<h1>게시판 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>순번</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${notices}">
+        <td th:text="${list.rankNo}"></td>
+        <td th:onclick="'detailMove(' + ${list.noticeId} + ');'" th:text="${list.title}"></td>
+        <td th:text="${list.createId}"></td>
+        <td th:text="${list.createAt}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <button type="button" th:onclick="'insertNoticeMove();'">등록</button>
+</div>
+
+<script>
+    function detailMove(noticeId) {
+        location.href = "notice/notice-detail/" + noticeId;
+    }
+
+    function insertNoticeMove() {
+        location.href = "notice/insert-view";
+    }
+</script>
+</body>
+</html>

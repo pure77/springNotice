@@ -41,7 +41,7 @@ public class NoticeController {
 
     /** 게시판 수정 */
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
-    @ResponseBody
+    @ResponseBody //@RequestBody 어노테이션을 사용하여 HTTP 요청 본문에 담긴 값들을 자바객체로 변환시켜, 객체에 저장한다.
     public int updateDetail(@RequestBody NoticeRequest noticeRequest) {
         System.out.println("updateDetail noticeRequest ==> " + noticeRequest);
         return noticeService.updateDetail(noticeRequest);
